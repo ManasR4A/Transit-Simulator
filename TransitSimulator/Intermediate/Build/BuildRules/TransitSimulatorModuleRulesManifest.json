@@ -1,8 +1,0 @@
-{
-	"SourceFiles": [
-		"C:\\Docs\\EAE-6330\\ResearchProject\\Transit-Simulator\\TransitSimulator\\Source\\TransitSimulator\\TransitSimulator.Build.cs",
-		"C:\\Docs\\EAE-6330\\ResearchProject\\Transit-Simulator\\TransitSimulator\\Source\\TransitSimulator.Target.cs",
-		"C:\\Docs\\EAE-6330\\ResearchProject\\Transit-Simulator\\TransitSimulator\\Source\\TransitSimulatorEditor.Target.cs"
-	],
-	"EngineVersion": "4.25.3"
-}
