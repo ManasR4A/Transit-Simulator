@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <None Include="..\..\TransitSimulator.uproject" />
+    <Filter Include="Source">
+      <UniqueIdentifier>{B88969D9-934F-4089-AA43-E7E0B4858692}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\TransitSimulator.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <None Include="..\..\Source\TransitSimulatorEditor.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <Filter Include="Config">
+      <UniqueIdentifier>{BC76ABF6-CAE4-4133-9783-6F1121FE6830}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Config\DefaultEditor.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEngine.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultGame.ini">
+      <Filter>Config</Filter>
+    </None>
+    <Filter Include="Source\TransitSimulator">
+      <UniqueIdentifier>{B9A5950E-14C0-4B63-AE13-518DB3A1AC92}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\TransitSimulator\CityGenerater.cpp">
+      <Filter>Source\TransitSimulator</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\TransitSimulator\CityGenerater.h">
+      <Filter>Source\TransitSimulator</Filter>
+    </ClInclude>
+    <None Include="..\..\Source\TransitSimulator\TransitSimulator.Build.cs">
+      <Filter>Source\TransitSimulator</Filter>
+    </None>
+    <ClCompile Include="..\..\Source\TransitSimulator\TransitSimulator.cpp">
+      <Filter>Source\TransitSimulator</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\TransitSimulator\TransitSimulator.h">
+      <Filter>Source\TransitSimulator</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\TransitSimulator\TransitSimulatorGameModeBase.cpp">
+      <Filter>Source\TransitSimulator</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\TransitSimulator\TransitSimulatorGameModeBase.h">
+      <Filter>Source\TransitSimulator</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\TransitSimulator\UserController.cpp">
+      <Filter>Source\TransitSimulator</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\TransitSimulator\UserController.h">
+      <Filter>Source\TransitSimulator</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
