@@ -3,6 +3,9 @@
 #pragma once
 
 #include "CoreMinimal.h"
+
+#include "TSHelperLibrary.h"
+
 #include "Components/ActorComponent.h"
 #include "TSBuildingComponent.generated.h"
 
@@ -29,9 +32,14 @@ public:
 
 
 	UTSRoadComponent* ParentRoad;
-	UTSGridTileComponent* ParentTile;
-	uint32 SimCapacity;
 
+	UTSGridTileComponent* ParentTile;
+
+	UPROPERTY(EditAnywhere)
+		uint32 SimCapacity;
+
+	UPROPERTY(EditAnywhere)
+		TEnumAsByte<EBuildingType> BuildingType;
 
 		
 };

@@ -10,6 +10,7 @@
  * 
  */
 
+UENUM()
 enum EBuildingType
 {
 	LowRes, HighRes,
@@ -17,6 +18,7 @@ enum EBuildingType
 	Industry, Office, NoBuild
 };
 
+UENUM()
 enum EGridTileType
 {
 	Road, Intersection,

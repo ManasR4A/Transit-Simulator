@@ -3,7 +3,7 @@
 
 #include "TSHelperLibrary.h"
 
-void UTSHelperLibrary::DebugPrintLog(FString i_string, bool bIsError = false)
+void UTSHelperLibrary::DebugPrintLog(FString i_string, bool bIsError)
 {
 	if (bIsError)
 	{
