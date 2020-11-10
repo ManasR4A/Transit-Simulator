@@ -3,21 +3,18 @@
 #pragma once
 
 #include "CoreMinimal.h"
-
-#include "TSHelperLibrary.h"
-
 #include "Components/ActorComponent.h"
-#include "TSGridTileComponent.generated.h"
+#include "TSIntersectionComponent.generated.h"
 
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
-class TRANSITSIMULATOR_API UTSGridTileComponent : public UActorComponent
+class TRANSITSIMULATOR_API UTSIntersectionComponent : public UActorComponent
 {
 	GENERATED_BODY()
 
 public:	
 	// Sets default values for this component's properties
-	UTSGridTileComponent();
+	UTSIntersectionComponent();
 
 protected:
 	// Called when the game starts
@@ -28,7 +25,4 @@ public:
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
 		
-	TEnumAsByte<EGridTileType> TileType;;
-
-
 };

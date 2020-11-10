@@ -7,17 +7,19 @@
 #include "TSHelperLibrary.h"
 
 #include "Components/ActorComponent.h"
-#include "TSGridTileComponent.generated.h"
+#include "TSRoadComponent.generated.h"
 
+
+class UTSGridTileComponent;
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
-class TRANSITSIMULATOR_API UTSGridTileComponent : public UActorComponent
+class TRANSITSIMULATOR_API UTSRoadComponent : public UActorComponent
 {
 	GENERATED_BODY()
 
 public:	
 	// Sets default values for this component's properties
-	UTSGridTileComponent();
+	UTSRoadComponent();
 
 protected:
 	// Called when the game starts
@@ -27,8 +29,17 @@ public:
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
+
+#pragma region Public Vars
+
+	TArray<UTSGridTileComponent*> SpawnTiles;
+
+	UTSGridTileComponent* ParentTile;
+
+	TEnumAsByte<EBuildingType> BuildingType;
+
+#pragma endregion
+
+
 		
-	TEnumAsByte<EGridTileType> TileType;;
-
-
 };
