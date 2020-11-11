@@ -35,10 +35,10 @@ public:
 
 	UTSGridTileComponent* ParentTile;
 
-	UPROPERTY(EditAnywhere)
-		uint32 SimCapacity;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		int32 SimCapacity;
 
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		TEnumAsByte<EBuildingType> BuildingType;
 
 		

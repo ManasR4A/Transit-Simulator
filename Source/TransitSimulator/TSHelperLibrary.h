@@ -10,7 +10,7 @@
  * 
  */
 
-UENUM()
+UENUM(BlueprintType)
 enum EBuildingType
 {
 	LowRes, HighRes,
@@ -18,7 +18,7 @@ enum EBuildingType
 	Industry, Office, NoBuild
 };
 
-UENUM()
+UENUM(BlueprintType)
 enum EGridTileType
 {
 	Road, Intersection,
