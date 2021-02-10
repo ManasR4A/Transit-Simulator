@@ -17,6 +17,10 @@
 		{
 			"Name": "HoudiniEngine",
 			"Enabled": false
+		},
+		{
+			"Name": "Test",
+			"Enabled": false
 		}
 	]
 }
