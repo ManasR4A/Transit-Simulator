@@ -21,18 +21,24 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-	UPROPERTY(EditAnywhere, Category = "Road", meta = (DisplayName = " Mesh"))
+	UPROPERTY(EditAnywhere, Category = "Road", meta = (DisplayName = " Root"))
 		class USceneComponent* root;
 
-	UPROPERTY(EditAnywhere, Category = "Road", meta = (DisplayName = " Left lane"))
+	UPROPERTY(EditAnywhere, Category = "Road", meta = (DisplayName = " Lane"))
 		USplineComponent* m_RoadSpline;
 
-	UPROPERTY(EditAnywhere, Category = "Road", meta = (DisplayName = " Right lane"))
-		USplineComponent* m_RoadSpline2;
 
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+
+	bool GetNextPoint(int32 i_direction, int32 i_currentIndex, FTransform &o_nextTransform);
+
+#if WITH_EDITOR
+
+	void PostEditChangeProperty(FPropertyChangedEvent& i_PropertyChanged) override;
+
+#endif
 
 	
 

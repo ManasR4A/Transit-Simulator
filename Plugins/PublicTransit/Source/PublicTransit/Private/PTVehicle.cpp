@@ -32,3 +32,8 @@ void APTVehicle::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent
 
 }
 
+bool APTVehicle::MoveToLocation(FVector i_DestLoc, bool i_bStop)
+{
+	return true;
+}
+

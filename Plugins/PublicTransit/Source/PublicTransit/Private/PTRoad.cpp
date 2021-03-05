@@ -13,7 +13,6 @@ APTRoad::APTRoad()
 	PrimaryActorTick.bCanEverTick = true;
 	root = CreateDefaultSubobject<USceneComponent>(TEXT("root"));
 	m_RoadSpline = CreateDefaultSubobject<USplineComponent>(TEXT("Left Lane"));
-	m_RoadSpline2 = CreateDefaultSubobject<USplineComponent>(TEXT("Right lane"));
 	RootComponent = root;
 
 }
@@ -23,13 +22,9 @@ void APTRoad::BeginPlay()
 {
 	Super::BeginPlay();
 
-	auto s = m_RoadSpline->GetSplineLength();
+	float s = m_RoadSpline->GetSplineLength();
 	FString as = FString::FromInt(s);
-	UE_LOG(LogTemp, Warning, TEXT("%s"), *FString(as));
-
-	s = m_RoadSpline2->GetSplineLength();
-	as = FString::FromInt(s);
-	UE_LOG(LogTemp, Warning, TEXT("%s"), *FString(as));
+	UE_LOG(LogTemp, Warning, TEXT("%s"), *as);
 	
 }
 
@@ -38,5 +33,25 @@ void APTRoad::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+}
+
+bool APTRoad::GetNextPoint(int32 i_direction, int32 i_currentIndex, FTransform& o_nextTransform)
+{
+	int32 nextIndex = i_currentIndex;
+	nextIndex = i_direction >= 0 ? nextIndex++ : nextIndex--;
+	
+	if (nextIndex >= this->m_RoadSpline->GetNumberOfSplinePoints() || nextIndex < 0)
+		return false;
+
+	o_nextTransform = this->m_RoadSpline->GetTransformAtSplinePoint(nextIndex, ESplineCoordinateSpace::World);
+	return true;
+}
+
+void APTRoad::PostEditChangeProperty(FPropertyChangedEvent& i_PropertyChanged)
+{
+	FString name = i_PropertyChanged.Property->GetFName().ToString();
+	UE_LOG(LogTemp, Warning, TEXT("%s"), *name);
+
+	Super::PostEditChangeProperty(i_PropertyChanged);
 }
 

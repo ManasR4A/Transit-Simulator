@@ -26,6 +26,8 @@ public class PublicTransit : ModuleRules
 			new string[]
 			{
 				"Core",
+				"Engine",
+				"AIModule"
 				// ... add other public dependencies that you statically link with here ...
 			}
 			);
@@ -35,7 +37,6 @@ public class PublicTransit : ModuleRules
 			new string[]
 			{
 				"CoreUObject",
-				"Engine",
 				"Slate",
 				"SlateCore",
 				// ... add private dependencies that you statically link with here ...	
