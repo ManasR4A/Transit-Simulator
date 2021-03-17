@@ -47,11 +47,11 @@ bool APTRoad::GetNextPoint(int32 i_direction, int32 i_currentIndex, FTransform& 
 	return true;
 }
 
-void APTRoad::PostEditChangeProperty(FPropertyChangedEvent& i_PropertyChanged)
-{
-	FString name = i_PropertyChanged.Property->GetFName().ToString();
-	UE_LOG(LogTemp, Warning, TEXT("%s"), *name);
-
-	Super::PostEditChangeProperty(i_PropertyChanged);
-}
+//void APTRoad::PostEditChangeProperty(FPropertyChangedEvent& i_PropertyChanged)
+//{
+//	FString name = i_PropertyChanged.Property->GetFName().ToString();
+//	UE_LOG(LogTemp, Warning, TEXT("%s"), *name);
+//
+//	Super::PostEditChangeProperty(i_PropertyChanged);
+//}
 

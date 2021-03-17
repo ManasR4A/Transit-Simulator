@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "TimerManager.h"
 #include "GameFramework/Actor.h"
 #include "PTSimulationManager.generated.h"
 
@@ -15,6 +16,22 @@ public:
 	// Sets default values for this actor's properties
 	APTSimulationManager();
 
+	UPROPERTY(EditAnywhere, Category = "Initialization|Timer")
+		int32 SimulationSpeed;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Runtime|Timer")
+		int64 SimTime;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Runtime|Timer|Time")
+		int32 Hour;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Runtime|Timer|Time")
+		int32 m_Min;
+
+	// Global Time Manager
+	FTimerHandle TimeManager;
+	FTimerDynamicDelegate TimerUpdateDelegate;
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -22,5 +39,9 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+
+	UFUNCTION()
+		void TimerUpdate();
+
 
 };

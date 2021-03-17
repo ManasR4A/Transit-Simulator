@@ -17,10 +17,6 @@
 		{
 			"Name": "HoudiniEngine",
 			"Enabled": false
-		},
-		{
-			"Name": "PublicTransit",
-			"Enabled": true
 		}
 	]
 }

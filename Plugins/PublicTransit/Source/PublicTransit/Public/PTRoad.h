@@ -36,7 +36,7 @@ public:
 
 #if WITH_EDITOR
 
-	void PostEditChangeProperty(FPropertyChangedEvent& i_PropertyChanged) override;
+	//void PostEditChangeProperty(FPropertyChangedEvent& i_PropertyChanged) override;
 
 #endif
 
