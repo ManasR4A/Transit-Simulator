@@ -16,21 +16,46 @@ public:
 	// Sets default values for this actor's properties
 	APTSimulationManager();
 
-	UPROPERTY(EditAnywhere, Category = "Initialization|Timer")
-		int32 SimulationSpeed;
+#pragma region Public Data Members
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Runtime|Timer")
-		int64 SimTime;
+#pragma region Global Time
+	UPROPERTY(EditAnywhere, Category = "Initialization|Timer", meta = (DisplayName = "Simulation Speed"))
+		int32 m_SimulationSpeed;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Runtime|Timer|Time")
-		int32 Hour;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Runtime|Timer", meta = (DisplayName = "Simulation Time"))
+		int64 m_SimTime;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Runtime|Timer|Time")
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Runtime|Timer|Time", meta = (DisplayName = "SimulationTime (Hour)"))
+		int32 m_Hour;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Runtime|Timer|Time", meta = (DisplayName = "SimulationTime (Min)"))
 		int32 m_Min;
+#pragma endregion
 
-	// Global Time Manager
+#pragma region Simulation Parameters
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Initialization|Simulation Params", meta = (DisplayName = "Consider Weather"))
+		bool m_considerWeather;
+
+	/* Total Walk Distance bool. */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Initialization|Simulation Params", meta = (DisplayName = "Consider TotalWalkDistance"))
+		bool m_considerTWD;
+
+	/* Total Walk Distance Max Value. */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Initialization|Simulation Params", meta = (DisplayName = "Maximum TotalWalkDistance", EditCondition = m_considerTWD))
+		float m_maxTWD;
+#pragma endregion
+
+#pragma endregion
+
+
+#pragma region Delegates
+
+#pragma region Global Time Manager
 	FTimerHandle TimeManager;
 	FTimerDynamicDelegate TimerUpdateDelegate;
+#pragma endregion
+
+#pragma endregion
 
 protected:
 	// Called when the game starts or when spawned

@@ -7,6 +7,7 @@
 #include "PTRoad.generated.h"
 
 class USplineComponent;
+class UArrowComponent;
 
 UCLASS()
 class PUBLICTRANSIT_API APTRoad : public AActor
@@ -24,8 +25,13 @@ protected:
 	UPROPERTY(EditAnywhere, Category = "Road", meta = (DisplayName = " Root"))
 		class USceneComponent* root;
 
-	UPROPERTY(EditAnywhere, Category = "Road", meta = (DisplayName = " Lane"))
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Road", meta = (DisplayName = " Lane"))
 		USplineComponent* m_RoadSpline;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Road", meta = (DisplayName = " Connectors"))
+		TArray<UArrowComponent*> m_connectors;
+
+	//UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Road", meta = (DisplayName = " Connectors' Data"))
 
 
 public:	

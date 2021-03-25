@@ -8,10 +8,11 @@ APTSimulationManager::APTSimulationManager()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
-	SimulationSpeed = 60;
-	SimTime = 0;
-	Hour = 0;
+	m_SimulationSpeed = 60;
+	m_SimTime = 0;
+	m_Hour = 0;
 	m_Min = 0;
+	m_considerWeather = false;
 }
 
 // Called when the game starts or when spawned
@@ -33,9 +34,9 @@ void APTSimulationManager::Tick(float DeltaTime)
 
 void APTSimulationManager::TimerUpdate()
 {
-	SimTime += SimulationSpeed;
-	Hour = SimTime / 60;
-	m_Min = SimTime % 60;
+	m_SimTime += m_SimulationSpeed;
+	m_Hour = m_SimTime / 60;
+	m_Min = m_SimTime % 60;
 	UE_LOG(LogTemp, Warning, TEXT("PT| GlobalTimer Updated"));
 
 }
