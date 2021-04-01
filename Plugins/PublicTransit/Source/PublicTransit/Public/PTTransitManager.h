@@ -6,6 +6,8 @@
 #include "GameFramework/Actor.h"
 #include "PTTransitManager.generated.h"
 
+class APTRoad;
+
 UCLASS()
 class PUBLICTRANSIT_API APTTransitManager : public AActor
 {
@@ -19,7 +21,8 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Transit Manager|Road", meta = (DisplayName = "All Roads"))
+		TArray<APTRoad*> m_roads;
 
 public:	
 	// Called every frame

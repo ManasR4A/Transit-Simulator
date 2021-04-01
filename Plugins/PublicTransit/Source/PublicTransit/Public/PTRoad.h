@@ -9,6 +9,15 @@
 class USplineComponent;
 class UArrowComponent;
 
+
+USTRUCT()
+struct FConnectorData
+{
+	GENERATED_USTRUCT_BODY()
+	APTRoad* connectedRoad;
+	int32 targetIndex;
+};
+
 UCLASS()
 class PUBLICTRANSIT_API APTRoad : public AActor
 {
@@ -22,16 +31,20 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-	UPROPERTY(EditAnywhere, Category = "Road", meta = (DisplayName = " Root"))
-		class USceneComponent* root;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Road", meta = (DisplayName = "Left Lane"))
+		USplineComponent* m_leftLaneSpline;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Road", meta = (DisplayName = " Lane"))
-		USplineComponent* m_RoadSpline;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Road", meta = (DisplayName = "Left Lane"))
+		USplineComponent* m_rightLaneSpline;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Road", meta = (DisplayName = " Connectors"))
 		TArray<UArrowComponent*> m_connectors;
 
 	//UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Road", meta = (DisplayName = " Connectors' Data"))
+	//	TMap<int32, FConnectorData> m_connectionData;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Road", meta = (DisplayName = " Update Connections"))
+		bool m_bUpdateConnections;
 
 
 public:	
@@ -42,7 +55,7 @@ public:
 
 #if WITH_EDITOR
 
-	//void PostEditChangeProperty(FPropertyChangedEvent& i_PropertyChanged) override;
+	void PostEditChangeProperty(FPropertyChangedEvent& i_PropertyChanged) override;
 
 #endif
 
