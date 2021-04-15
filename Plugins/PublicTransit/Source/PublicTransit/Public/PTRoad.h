@@ -10,14 +10,6 @@ class USplineComponent;
 class UArrowComponent;
 
 
-USTRUCT()
-struct FConnectorData
-{
-	GENERATED_USTRUCT_BODY()
-	APTRoad* connectedRoad;
-	int32 targetIndex;
-};
-
 UCLASS()
 class PUBLICTRANSIT_API APTRoad : public AActor
 {
@@ -39,9 +31,6 @@ protected:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Road", meta = (DisplayName = " Connectors"))
 		TArray<UArrowComponent*> m_connectors;
-
-	//UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Road", meta = (DisplayName = " Connectors' Data"))
-	//	TMap<int32, FConnectorData> m_connectionData;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Road", meta = (DisplayName = " Update Connections"))
 		bool m_bUpdateConnections;

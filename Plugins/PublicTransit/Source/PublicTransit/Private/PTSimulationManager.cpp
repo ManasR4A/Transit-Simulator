@@ -41,3 +41,7 @@ void APTSimulationManager::TimerUpdate()
 
 }
 
+void APTSimulationManager::InitializeRepeatingInput(int32 repeatingTime)
+{
+}
+

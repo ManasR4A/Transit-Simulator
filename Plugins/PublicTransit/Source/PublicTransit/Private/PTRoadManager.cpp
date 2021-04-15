@@ -2,6 +2,7 @@
 
 
 #include "PTRoadManager.h"
+#include "PTRoadNode.h"
 
 // Sets default values
 APTRoadManager::APTRoadManager()
@@ -10,6 +11,8 @@ APTRoadManager::APTRoadManager()
 	PrimaryActorTick.bCanEverTick = true;
 
 }
+
+
 
 // Called when the game starts or when spawned
 void APTRoadManager::BeginPlay()
@@ -22,7 +25,7 @@ void APTRoadManager::BeginPlay()
 void APTRoadManager::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
+	TSet<int, int> asd;
 }
 
 void APTRoadManager::UpdateConnectors()

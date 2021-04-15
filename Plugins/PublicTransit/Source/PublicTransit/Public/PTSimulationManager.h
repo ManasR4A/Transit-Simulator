@@ -37,13 +37,27 @@ public:
 		bool m_considerWeather;
 
 	/* Total Walk Distance bool. */
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Initialization|Simulation Params", meta = (DisplayName = "Consider TotalWalkDistance"))
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Initialization|Simulation Params", meta = (DisplayName = "Consider Total Walk Distance"))
 		bool m_considerTWD;
 
 	/* Total Walk Distance Max Value. */
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Initialization|Simulation Params", meta = (DisplayName = "Maximum TotalWalkDistance", EditCondition = m_considerTWD))
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Initialization|Simulation Params", meta = (DisplayName = "Maximum Total Walk Distance", EditCondition = m_considerTWD))
 		float m_maxTWD;
+
+	/** Avcerage Income consideration bool. */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Initialization|Simulation Params", meta = (DisplayName = "Consider Average Income"))
+		bool m_considerIncome;
+
+	/** The average income for 0.5 utikity of taking public transit. */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Initialization|Simulation Params", meta = (DisplayName = "Average Income", EditCondition = m_considerIncome))
+		float m_averageIncome;
+
+	/** The income variance for the utility curve. */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Initialization|Simulation Params", meta = (DisplayName = "Income Variance", EditCondition = m_considerIncome))
+	float m_incomeVariance;
 #pragma endregion
+
+
 
 #pragma endregion
 
@@ -68,5 +82,11 @@ public:
 	UFUNCTION()
 		void TimerUpdate();
 
+#pragma region Input Methods
+
+	UFUNCTION(BlueprintCallable, Category = "Simulation Manager|Runtime")
+		void InitializeRepeatingInput(int32 repeatingTime);
+
+#pragma endregion
 
 };
