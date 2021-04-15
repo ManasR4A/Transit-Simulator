@@ -3,7 +3,8 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Engine/UserDefinedStruct.h"
+#include "GameFramework/Actor.h"
+#include "PTPriorityQueueStruct.h"
 
 #include "Queue"
 
@@ -14,75 +15,29 @@
  * 
  */
 
-class APTRoadNode;
-
-USTRUCT(BlueprintType)
-struct FNodeRecord
+UCLASS(ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))
+class PUBLICTRANSIT_API APriorityQueue : public AActor
 {
-	GENERATED_USTRUCT_BODY()
-
-	FNodeRecord()
-	{
-
-	}
-
-	void Init(APTRoadNode* i_currentNode, float i_costSoFar, float i_estimatedTotalCost, APTRoadNode* i_parentNode = nullptr)
-	{
-		currentNode = i_currentNode;
-		parentNode = i_parentNode;
-		costSoFar = i_costSoFar;
-		estimatedTotalCost = i_estimatedTotalCost;
-	}
-
-	UPROPERTY(BlueprintReadWrite)
-	APTRoadNode* currentNode;
-	UPROPERTY(BlueprintReadWrite)
-	APTRoadNode* parentNode;
-	UPROPERTY(BlueprintReadWrite)
-	float costSoFar;
-	UPROPERTY(BlueprintReadWrite)
-	float estimatedTotalCost;
-
-};
-
-USTRUCT(BlueprintType)
-struct FPriorityQueueNode 
-{
-    GENERATED_USTRUCT_BODY()
-    
-    UPROPERTY(BlueprintReadWrite)
-    FNodeRecord Element;
-    UPROPERTY(BlueprintReadWrite)
-    float Priority;
-
-    FPriorityQueueNode()
-    {
-    }
-
-    FPriorityQueueNode(FNodeRecord InElement, float InPriority)
-    {
-        Element = InElement;
-        Priority = InPriority;
-    }
-
-    bool operator<(const FPriorityQueueNode& Other) const
-    {
-        return Priority < Other.Priority;
-    }
-};
-
-
-UCLASS()
-class UPriorityQueue : public UActorComponent
-{
-public:
     GENERATED_BODY()
+
+protected:
+    // Called when the game starts
+    virtual void BeginPlay() override;
+
+public:
+    // Called every frame
+    virtual void Tick(float DeltaTime) override;
+
+
+public:
+
 
     UPROPERTY(BlueprintReadWrite, EditAnywhere)
         TArray<FPriorityQueueNode> Array;
 
-    UPriorityQueue()
+    APriorityQueue()
     {
+        PrimaryActorTick.bCanEverTick = true;
         Array.Heapify();
     }
 

@@ -9,8 +9,10 @@
 #include "PTSimulationManager.generated.h"
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FHandleRepeatingRequest, FPTRepeatingRequest, i_repeatingRequest);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FTimerUpdate);
 
 class APTBuilding;
+class APTTransitManager;
 
 UCLASS()
 class PUBLICTRANSIT_API APTSimulationManager : public AActor
@@ -24,6 +26,9 @@ public:
 #pragma region Public Data Members
 
 #pragma region References
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Initialization|References", meta = (DisplayName = "Transit Manager Reference"))
+		APTTransitManager* m_transitSimRef;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Initialization|References", meta = (DisplayName = "All Buildings"))
 		TArray<APTBuilding*> m_allBuildings;
@@ -83,6 +88,9 @@ public:
 
 	UPROPERTY(BlueprintAssignable)
 		FHandleRepeatingRequest handleRepeatingRequests;
+
+	UPROPERTY(BlueprintAssignable)
+		FTimerUpdate OnTimeUpdate;
 
 #pragma endregion
 

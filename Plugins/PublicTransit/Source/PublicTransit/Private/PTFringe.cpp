@@ -3,3 +3,16 @@
 
 #include "PTFringe.h"
 
+// Called when the game starts
+void APriorityQueue::BeginPlay()
+{
+	Super::BeginPlay();
+
+	// ...
+
+}
+
+void APriorityQueue::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+}

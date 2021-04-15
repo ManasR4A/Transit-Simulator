@@ -39,6 +39,7 @@ void APTSimulationManager::TimerUpdate()
 	m_Min = m_SimTime % 60;
 	UE_LOG(LogTemp, Warning, TEXT("PT| GlobalTimer Updated"));
 
+	OnTimeUpdate.Broadcast();
 }
 
 void APTSimulationManager::RecieveBroadcast(FPTRepeatingRequest i_repReq)
