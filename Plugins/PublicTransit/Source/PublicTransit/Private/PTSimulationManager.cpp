@@ -41,6 +41,11 @@ void APTSimulationManager::TimerUpdate()
 
 }
 
+void APTSimulationManager::RecieveBroadcast(FPTRepeatingRequest i_repReq)
+{
+	handleRepeatingRequests.Broadcast(i_repReq);
+}
+
 void APTSimulationManager::InitializeRepeatingInput(int32 repeatingTime)
 {
 }

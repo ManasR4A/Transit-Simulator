@@ -5,7 +5,12 @@
 #include "CoreMinimal.h"
 #include "TimerManager.h"
 #include "GameFramework/Actor.h"
+#include "PTRequest.h"
 #include "PTSimulationManager.generated.h"
+
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FHandleRepeatingRequest, FPTRepeatingRequest, i_repeatingRequest);
+
+class APTBuilding;
 
 UCLASS()
 class PUBLICTRANSIT_API APTSimulationManager : public AActor
@@ -18,8 +23,15 @@ public:
 
 #pragma region Public Data Members
 
+#pragma region References
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Initialization|References", meta = (DisplayName = "All Buildings"))
+		TArray<APTBuilding*> m_allBuildings;
+
+#pragma endregion
+
 #pragma region Global Time
-	UPROPERTY(EditAnywhere, Category = "Initialization|Timer", meta = (DisplayName = "Simulation Speed"))
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Initialization|Timer", meta = (DisplayName = "Simulation Speed"))
 		int32 m_SimulationSpeed;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Runtime|Timer", meta = (DisplayName = "Simulation Time"))
@@ -69,6 +81,9 @@ public:
 	FTimerDynamicDelegate TimerUpdateDelegate;
 #pragma endregion
 
+	UPROPERTY(BlueprintAssignable)
+		FHandleRepeatingRequest handleRepeatingRequests;
+
 #pragma endregion
 
 protected:
@@ -81,6 +96,9 @@ public:
 
 	UFUNCTION()
 		void TimerUpdate();
+
+	UFUNCTION(BlueprintCallable)
+		void RecieveBroadcast(FPTRepeatingRequest i_repReq);
 
 #pragma region Input Methods
 

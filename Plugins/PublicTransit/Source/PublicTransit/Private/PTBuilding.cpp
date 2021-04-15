@@ -1,40 +1,27 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "PTRoadManager.h"
-#include "PTRoadNode.h"
+#include "PTBuilding.h"
 
 // Sets default values
-APTRoadManager::APTRoadManager()
+APTBuilding::APTBuilding()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
 }
 
-
-
 // Called when the game starts or when spawned
-void APTRoadManager::BeginPlay()
+void APTBuilding::BeginPlay()
 {
 	Super::BeginPlay();
 	
 }
 
 // Called every frame
-void APTRoadManager::Tick(float DeltaTime)
+void APTBuilding::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-}
 
-void APTRoadManager::UpdateConnectors()
-{
-	GetRoadNodes.Broadcast();
 }
-
-void APTRoadManager::FinalizeConnections()
-{
-	FinalizeConnection.Broadcast();
-}
-
 
