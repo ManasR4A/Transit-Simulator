@@ -15,7 +15,7 @@
  * 
  */
 
-UCLASS(ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))
+UCLASS()
 class PUBLICTRANSIT_API APriorityQueue : public AActor
 {
     GENERATED_BODY()

@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "Components/ActorComponent.h"
 #include "PTRoadManager.generated.h"
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FConnectionDelegate);
