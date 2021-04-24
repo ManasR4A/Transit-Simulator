@@ -14,6 +14,12 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE(FTimerUpdate);
 class APTBuilding;
 class APTTransitManager;
 
+UENUM(BlueprintType)
+enum EWeather
+{
+	Rain, Sunny
+};
+
 UCLASS()
 class PUBLICTRANSIT_API APTSimulationManager : public AActor
 {
@@ -50,8 +56,15 @@ public:
 #pragma endregion
 
 #pragma region Simulation Parameters
+	/** Bool that defines if the weather should be in consideration. */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Initialization|Simulation Params", meta = (DisplayName = "Consider Weather"))
 		bool m_considerWeather;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Initialization|Simulation Params", meta = (DisplayName = "Weather Modifiers", EditCondition = m_considerWeather))
+		TMap<TEnumAsByte<EWeather>, float> m_WeatherModifier;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Initialization|Simulation Params", meta = (DisplayName = "Current Weather", EditCondition = m_considerWeather))
+		TEnumAsByte<EWeather> m_currentWeather;
 
 	/* Total Walk Distance bool. */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Initialization|Simulation Params", meta = (DisplayName = "Consider Total Walk Distance"))
